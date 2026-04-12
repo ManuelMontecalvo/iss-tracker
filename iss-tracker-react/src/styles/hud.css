@@ -1,0 +1,381 @@
+/* ============================================== */
+/*     ISS HUD - STILI FUTURISTICI PRINCIPALI     */
+/* ============================================== */
+
+:root {
+  --bg-main: #050810;
+  --bg-panel: #0b1220;
+  --accent: #00eaff;
+  --accent-soft: rgba(0, 234, 255, 0.3);
+  --warning: #ff3b3b;
+  --text-main: #e5f4ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #101626 0, #050810 55%);
+  color: var(--text-main);
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ============================================== */
+/*                 GRID OVERLAY HUD               */
+/* ============================================== */
+
+.hud-grid-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 234, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 234, 255, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  z-index: 10;
+}
+
+/* ============================================== */
+/*           PANNELLO TELEMETRIA PRINCIPALE       */
+/* ============================================== */
+
+.hud-panel {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(5, 12, 25, 0.95), rgba(5, 20, 40, 0.9));
+  border: 1px solid var(--accent-soft);
+  box-shadow:
+    0 0 20px rgba(0, 234, 255, 0.25),
+    0 0 60px rgba(0, 234, 255, 0.15);
+  backdrop-filter: blur(10px);
+  min-width: 260px;
+  z-index: 20;
+}
+
+.hud-title {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.hud-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  margin: 0.4rem 0 0.7rem;
+  opacity: 0.7;
+}
+
+.hud-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1rem;
+  font-size: 0.8rem;
+}
+
+.hud-label {
+  opacity: 0.7;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hud-value {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.hud-status {
+  margin-top: 0.6rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.8;
+}
+
+.hud-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  margin-right: 0.4rem;
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+  0% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.6); 
+    opacity: 0.3; 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+.interval-label {
+  color: var(--accent);
+}
+
+/* ============================================== */
+/*               CERCHIO RADAR ANIMATO            */
+/* ============================================== */
+
+.hud-radar {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-soft);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+  overflow: hidden;
+  z-index: 20;
+}
+
+.hud-radar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.25), transparent 60%);
+  opacity: 0.4;
+}
+
+.hud-radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 234, 255, 0.4),
+    transparent 40%
+  );
+  animation: sweep 3s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes sweep {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+.hud-radar-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px var(--accent);
+  z-index: 2;
+}
+
+.hud-radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 234, 255, 0.4);
+  inset: 20%;
+}
+
+.hud-radar-ring:nth-child(3) { 
+  inset: 35%; 
+}
+
+.hud-radar-ring:nth-child(4) { 
+  inset: 50%; 
+}
+
+/* ============================================== */
+/*              MARKER ISS PERSONALIZZATO         */
+/* ============================================== */
+
+.iss-marker {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow:
+    0 0 10px rgba(0, 234, 255, 0.9),
+    0 0 25px rgba(0, 234, 255, 0.7);
+  border: 2px solid #ffffff;
+}
+
+/* Glow dinamico sui segmenti del trail */
+.leaflet-overlay-pane .trail-segment {
+  filter: drop-shadow(0 0 6px rgba(0, 234, 255, 0.8))
+          drop-shadow(0 0 12px rgba(0, 234, 255, 0.4));
+  transition: opacity 0.4s linear;
+}
+
+/* ============================================== */
+/*          GAUGE CIRCOLARI (VELOCITÀ/ALTITUDINE) */
+/* ============================================== */
+
+.hud-gauge {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(0, 234, 255, 0.05);
+  border: 1px solid rgba(0, 234, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.15);
+  backdrop-filter: blur(6px);
+  z-index: 20;
+}
+
+.speed-gauge {
+  top: 2rem;
+  right: 2rem;
+}
+
+.alt-gauge {
+  top: 2rem;
+  right: 12rem;
+}
+
+.gauge-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) 0deg,
+    transparent 0deg
+  );
+  filter: drop-shadow(0 0 10px var(--accent));
+  transition: background 0.3s linear;
+}
+
+.gauge-cover {
+  position: absolute;
+  inset: 25%;
+  border-radius: 50%;
+  background: rgba(5, 12, 25, 0.9);
+  border: 1px solid rgba(0, 234, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.gauge-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.gauge-value {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-top: 0.2rem;
+  font-weight: bold;
+}
+
+/* ============================================== */
+/*              RESPONSIVE ADATTAMENTI           */
+/* ============================================== */
+
+@media (max-width: 1200px) {
+  .hud-panel {
+    top: 1rem;
+    left: 1rem;
+    min-width: 220px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .hud-gauge {
+    width: 140px;
+    height: 140px;
+  }
+
+  .speed-gauge {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .alt-gauge {
+    top: 1rem;
+    right: 10rem;
+  }
+
+  .hud-radar {
+    bottom: 1rem;
+    right: 1rem;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hud-panel {
+    min-width: 180px;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .hud-grid {
+    gap: 0.3rem 0.8rem;
+  }
+
+  .hud-gauge {
+    width: 120px;
+    height: 120px;
+  }
+
+  .gauge-label {
+    font-size: 0.5rem;
+  }
+
+  .gauge-value {
+    font-size: 0.85rem;
+  }
+
+  .alt-gauge {
+    right: 8.5rem;
+  }
+
+  .hud-radar {
+    width: 120px;
+    height: 120px;
+  }
+}

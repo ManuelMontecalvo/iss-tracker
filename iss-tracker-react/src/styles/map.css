@@ -1,0 +1,57 @@
+/* ============================================== */
+/*           CUSTOM STYLES PER LEAFLET MAP        */
+/* ============================================== */
+
+/* Override dei colori di default Leaflet per tema scuro */
+.leaflet-container {
+  background: linear-gradient(circle at top, #101626 0, #050810 55%);
+  z-index: 5; /* Sotto gli HUD (che hanno z-index 10-20) */
+}
+
+/* Zoom controls nascosti (preferibilmente no, ma se necessario) */
+.leaflet-control-zoom {
+  display: none;
+}
+
+/* Attribution control nascosto */
+.leaflet-control-attribution {
+  display: none;
+}
+
+/* Popup personalizzato (se usato) */
+.leaflet-popup {
+  filter: brightness(1.2);
+}
+
+.leaflet-popup-content {
+  color: var(--text-main);
+  background: rgba(5, 12, 25, 0.95);
+  border: 1px solid var(--accent);
+}
+
+/* Animation smooth trail updates */
+.trail-segment {
+  transition: opacity 0.2s linear, stroke-width 0.2s linear;
+}
+
+/* Tooltip personalizzato (se usato) */
+.leaflet-tooltip {
+  background: rgba(5, 12, 25, 0.9);
+  border: 1px solid var(--accent);
+  color: var(--text-main);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+}
+
+/* Fix per iOS e mobile */
+.leaflet-container a.leaflet-active {
+  color: var(--accent);
+}
+
+/* Panning smooth */
+.leaflet-grab {
+  cursor: grab;
+}
+
+.leaflet-grabbing {
+  cursor: grabbing;
+}
