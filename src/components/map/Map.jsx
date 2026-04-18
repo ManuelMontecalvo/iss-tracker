@@ -161,7 +161,8 @@ function MapComponent({ latitude, longitude, velocity, altitude, footprint }) {
         height: '100vh', 
         position: 'absolute', 
         top: 0, 
-        left: 0 
+        left: 0,
+        zIndex: 1
       }}
     ></div>
   );

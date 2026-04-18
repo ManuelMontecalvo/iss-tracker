@@ -1,0 +1,53 @@
+/* ============================================== */
+/*         LAYOUT A 4 QUADRANTI FUTURISTICO       */
+/* ============================================== */
+
+.quadrant-layout {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  z-index: 5;
+}
+
+/* Quadranti */
+.quadrant {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 234, 255, 0.15);
+  background: rgba(5, 12, 25, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+/* Divisore a croce futuristico */
+.cross-divider {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.cross-divider::before,
+.cross-divider::after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 234, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
+}
+
+/* Linea verticale */
+.cross-divider::before {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-1px);
+}
+
+/* Linea orizzontale */
+.cross-divider::after {
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-1px);
+}

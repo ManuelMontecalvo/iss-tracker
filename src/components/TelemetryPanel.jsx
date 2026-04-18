@@ -16,19 +16,19 @@ function TelemetryPanelComponent({ latitude, longitude, velocity, altitude }) {
       
       <div className="hud-grid">
         <div>
-          <div className="hud-label">Latitudine</div>
+          <div className="hud-label">Latitude</div>
           <div className="hud-value">{formatCoordinate(latitude)}</div>
         </div>
         <div>
-          <div className="hud-label">Longitudine</div>
+          <div className="hud-label">Longitude</div>
           <div className="hud-value">{formatCoordinate(longitude)}</div>
         </div>
         <div>
-          <div className="hud-label">Velocità</div>
+          <div className="hud-label">Velocity</div>
           <div className="hud-value">{formatVelocity(velocity)}</div>
         </div>
         <div>
-          <div className="hud-label">Altitudine</div>
+          <div className="hud-label">Altitude</div>
           <div className="hud-value">{formatAltitude(altitude)}</div>
         </div>
       </div>
