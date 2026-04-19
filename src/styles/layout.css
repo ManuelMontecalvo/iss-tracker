@@ -20,6 +20,12 @@
   backdrop-filter: blur(6px);
 }
 
+/* Caricamento diretta nasa */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 /* Divisore a croce futuristico */
 .cross-divider {
   position: absolute;
