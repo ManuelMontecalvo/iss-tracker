@@ -1,6 +1,7 @@
 import { memo } from 'react';
-import '../styles/hud.css';
 import { formatCoordinate, formatVelocity, formatAltitude } from '../utils';
+
+import '../styles/components.css';
 
 /**
  * Pannello HUD principale con telemetria in tempo reale

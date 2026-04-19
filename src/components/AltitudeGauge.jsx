@@ -1,5 +1,4 @@
 import { useMemo, memo } from 'react';
-import '../styles/hud.css';
 import { calculateGaugeFill } from '../utils';
 import { MAX_ALTITUDE } from '../constants';
 

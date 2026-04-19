@@ -1,5 +1,5 @@
 /* ============================================== */
-/*         LAYOUT A 4 QUADRANTI FUTURISTICO       */
+/*               QUADRANT LAYOUT                  */
 /* ============================================== */
 
 .quadrant-layout {
@@ -8,10 +8,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  z-index: 5;
 }
 
-/* Quadranti */
 .quadrant {
   position: relative;
   overflow: hidden;
@@ -20,18 +18,11 @@
   backdrop-filter: blur(6px);
 }
 
-/* Caricamento diretta nasa */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* Divisore a croce futuristico */
+/* Cross divider */
 .cross-divider {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 20;
 }
 
 .cross-divider::before,
@@ -42,7 +33,6 @@
   box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
 }
 
-/* Linea verticale */
 .cross-divider::before {
   width: 2px;
   height: 100%;
@@ -50,10 +40,26 @@
   transform: translateX(-1px);
 }
 
-/* Linea orizzontale */
 .cross-divider::after {
   height: 2px;
   width: 100%;
   top: 50%;
   transform: translateY(-1px);
+}
+
+/* ============================================== */
+/*              GRID OVERLAY (OPTIONAL)           */
+/* ============================================== */
+
+.hud-grid-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 234, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 234, 255, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  z-index: 10;
 }

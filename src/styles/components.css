@@ -1,0 +1,208 @@
+/* ============================================== */
+/*                TELEMETRY PANEL                 */
+/* ============================================== */
+
+.hud-panel {
+  width: 100%;
+  flex-grow: 1;
+
+  /* dimensioni equilibrate */
+  padding: 1.4rem 1.8rem;
+  margin-bottom: 1rem; /* <-- margine tra pannello e gauge */
+
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(5, 12, 25, 0.95), rgba(5, 20, 40, 0.9));
+  border: 1px solid var(--accent-soft);
+
+  box-shadow:
+    0 0 20px rgba(0, 234, 255, 0.25),
+    0 0 60px rgba(0, 234, 255, 0.15);
+
+  backdrop-filter: blur(10px);
+
+  position: static !important;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Titolo */
+.hud-title {
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+/* Divider */
+.hud-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  margin: 0.5rem 0 1rem;
+  opacity: 0.7;
+}
+
+/* Griglia telemetrie */
+.hud-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 1.4rem;
+  font-size: 1rem;
+}
+
+.hud-grid > div {
+  line-height: 1.4;
+}
+
+.hud-label {
+  opacity: 0.75;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hud-value {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Stato aggiornamento */
+.hud-status {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+
+.hud-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  margin-right: 0.4rem;
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================== */
+/*                    RADAR                       */
+/* ============================================== */
+
+.hud-radar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-soft);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-radar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.25), transparent 60%);
+  opacity: 0.4;
+}
+
+.hud-radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 234, 255, 0.4),
+    transparent 40%
+  );
+  animation: sweep 3s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================== */
+/*                     GAUGE                      */
+/* ============================================== */
+
+.hud-gauge {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(0, 234, 255, 0.05);
+  border: 1px solid rgba(0, 234, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.15);
+  backdrop-filter: blur(6px);
+  position: relative;
+}
+
+.gauge-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) 0deg, transparent 0deg);
+  filter: drop-shadow(0 0 10px var(--accent));
+  transition: background 0.3s linear;
+}
+
+.gauge-cover {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: rgba(5, 12, 25, 1);
+  border: 1px solid rgba(0, 234, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gauge-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.gauge-value {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-top: 0.2rem;
+  font-weight: bold;
+}
+
+/* ============================================== */
+/*                  ISS MARKER                    */
+/* ============================================== */
+
+.iss-marker {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow:
+    0 0 10px rgba(0, 234, 255, 0.9),
+    0 0 25px rgba(0, 234, 255, 0.7);
+  border: 2px solid #ffffff;
+}

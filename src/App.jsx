@@ -6,9 +6,11 @@ import { TelemetryQuadrant } from './components/quadrants/TelemetryQuadrant';
 import { MapQuadrant } from './components/quadrants/MapQuadrant';
 import { MissionEvents } from './components/quadrants/MissionEvents';
 
-import './styles/hud.css';
 import './styles/map.css';
+import './styles/global.css';
+import './styles/components.css';
 import './styles/layout.css';
+
 
 function App() {
   const data = useISSData();

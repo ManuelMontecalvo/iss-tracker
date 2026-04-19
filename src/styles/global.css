@@ -1,0 +1,32 @@
+/* ============================================== */
+/*                 GLOBAL VARIABLES               */
+/* ============================================== */
+
+:root {
+  --bg-main: #050810;
+  --bg-panel: #0b1220;
+  --accent: #00eaff;
+  --accent-soft: rgba(0, 234, 255, 0.3);
+  --warning: #ff3b3b;
+  --text-main: #e5f4ff;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #101626 0, #050810 55%);
+  color: var(--text-main);
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
